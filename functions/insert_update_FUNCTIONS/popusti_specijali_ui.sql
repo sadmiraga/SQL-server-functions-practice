@@ -5,7 +5,6 @@ BEGIN
     --insert into popusti_specijali
     INSERT INTO popusti_specijali (id_popusta, id_specijala, popust)
     VALUES (i_id_popusta,i_id_specijala,(SELECT procent FROM popusti WHERE popusti.id_popusta=i_id_popusta));
-
     return true;
 END
 $$ LANGUAGE plpgsql;

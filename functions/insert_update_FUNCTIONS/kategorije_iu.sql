@@ -4,12 +4,10 @@ $$
     DECLARE
         kljuc integer;
 BEGIN
-
         -- INSERT FUNCTION
         IF(i_id_kategorije IS NULL ) THEN
             BEGIN
                 kljuc = nextval('kategorije_id_kategorije_seq');
-
                 INSERT INTO kategorije (id_kategorije, ime_kategorije)
                 VALUES (kljuc,i_ime_kategorije);
                 EXCEPTION
@@ -59,8 +57,7 @@ $$ LANGUAGE plpgsql;
 
 SELECT * FROM kategorije_iu(null,'puns');
 
-INSERT INTO kategorije (id_kategorije, ime_kategorije)
-                VALUES (20,'Pun Comedians');
+
 
 
 

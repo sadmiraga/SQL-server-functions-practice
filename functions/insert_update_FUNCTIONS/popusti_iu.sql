@@ -4,7 +4,6 @@ $$
     DECLARE
         kljuc integer;
 BEGIN
-
         -- INSERT FUNCTION
         IF(i_id_popusta IS NULL ) THEN
             BEGIN
@@ -35,9 +34,7 @@ BEGIN
                 datum_od = i_datum_od,
                 datum_do = i_datum_do
             WHERE id_popusta = i_id_popusta;
-
             kljuc = i_id_popusta;
-
             --exceptions
             EXCEPTION
             WHEN integrity_constraint_violation THEN
@@ -56,10 +53,6 @@ BEGIN
         END IF;
 
     RETURN kljuc;
-
-
-
 END;
 $$ LANGUAGE plpgsql;
-
 SELECT * FROM popusti_iu(10,'testni',0.5,cast(current_timestamp as timestamp),cast(current_timestamp as timestamp))

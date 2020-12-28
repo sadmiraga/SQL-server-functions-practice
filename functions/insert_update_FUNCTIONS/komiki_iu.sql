@@ -59,6 +59,4 @@
     $$ LANGUAGE plpgsql;
 
 SELECT FROM komiki_iu(null,false,16,1);
-
-
 SELECT FROM komiki_iu(11,true,1,1);

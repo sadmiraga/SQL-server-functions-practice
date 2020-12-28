@@ -52,8 +52,5 @@ BEGIN
    RETURN kljuc;
 END;
 $$ LANGUAGE plpgsql;
-
-
 SELECT FROM ogledi_iu(null,2,cast(current_timestamp as timestamp),12,15);
-
 SELECT FROM ogledi_iu(1,20,cast(current_timestamp as timestamp),12,15);

@@ -8,12 +8,10 @@ $$
     DECLARE
         kljuc integer;
 BEGIN
-
         -- INSERT FUNCTION
         IF(i_id_osebe IS NULL ) THEN
             BEGIN
                 kljuc = nextval('osebe_id_osebe_seq');
-
                 INSERT INTO osebe (id_osebe, ime, priimek, emso, spol, datum_rojstva, naslov, enaslov, telefon, davcna_stevilka, id_drzave, id_postne_stevilke)
                 VALUES (kljuc,i_ime,i_priimek,i_emso,i_spol,i_datum_rojstva,i_naslov,i_enaslov,i_telefon,i_davcna_stevilka,i_id_drzave,i_id_drzave);
                 EXCEPTION
@@ -46,9 +44,7 @@ BEGIN
                 id_drzave = i_id_drzave,
                 id_postne_stevilke = i_id_postne_stevilke
             WHERE id_osebe = i_id_osebe;
-
             kljuc = i_id_osebe;
-
             --exceptions
             EXCEPTION
             WHEN integrity_constraint_violation THEN
@@ -65,16 +61,8 @@ BEGIN
                 RAISE EXCEPTION 'Napaka ...';
             END;
         END IF;
-
     RETURN kljuc;
-
 END;
 $$ LANGUAGE plpgsql;
-
-SELECT * FROM osebe_iu (null,'Andrej','Skraba',
-'12345677','M','20.02.200','Jenkova cesta 25',
-'andrej@gmail.com','12345','1234567',2,2);
-
-SELECT * FROM osebe_iu (26,'Andrej','Skrabar',
-'1234567','M','12.12.2000','Jenkova cesta 25',
-'andrej@gmail.com','12345','1234567',2,2);
+SELECT * FROM osebe_iu (null,'Andrej','Skraba','12345677','M','20.02.200','Jenkova cesta 25','andrej@gmail.com','12345','1234567',2,2);
+SELECT * FROM osebe_iu (26,'Andrej','Skrabar','1234567','M','12.12.2000','Jenkova cesta 25','andrej@gmail.com','12345','1234567',2,2);

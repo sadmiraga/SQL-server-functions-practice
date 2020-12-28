@@ -48,7 +48,5 @@ BEGIN
    RETURN kljuc;
 END;
 $$ LANGUAGE plpgsql;
-
 SELECT FROM knjiznica_specijalov_iu(null,12,15);
-
 SELECT FROM knjiznica_specijalov_iu(1,1,15);

@@ -48,7 +48,5 @@ BEGIN
    RETURN kljuc;
 END;
 $$ LANGUAGE plpgsql;
-
 SELECT FROM najljubsi_iu(null,15,12);
-
 SELECT FROM najljubsi_iu(13,15,10);

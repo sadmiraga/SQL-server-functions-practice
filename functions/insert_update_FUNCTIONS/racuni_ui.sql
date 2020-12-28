@@ -5,7 +5,6 @@ $$
 DECLARE
     kljuc integer;
 BEGIN
-
     --check if id_racuna is passed
     IF (i_id_racuna IS NULL) THEN
         BEGIN
@@ -25,8 +24,6 @@ BEGIN
                     RAISE EXCEPTION 'Napaka ... validacijsko pravilo.';
                 WHEN others THEN
                     RAISE EXCEPTION 'Napaka ...';
-
-
         END;
     ELSE
         BEGIN
@@ -36,9 +33,8 @@ BEGIN
                 id_osebe = i_id_osebe,
                 id_vrste_placila = i_id_vrste_placila
             WHERE id_racuna = i_id_racuna;
-
-            kljuc = i_id_racuna;
-                                   EXCEPTION
+                kljuc = i_id_racuna;
+                EXCEPTION
                 WHEN integrity_constraint_violation THEN
                     RAISE EXCEPTION 'Napaka ... referenčna integriteta.';
                 WHEN not_null_violation THEN
@@ -51,21 +47,13 @@ BEGIN
                     RAISE EXCEPTION 'Napaka ... validacijsko pravilo.';
                 WHEN others THEN
                     RAISE EXCEPTION 'Napaka ...';
-
-
         END;
     END IF;
-
 return kljuc;
-
 END; --end of function
 $$ LANGUAGE plpgsql;
-
-
-
 --insert
 SELECT * FROM racuni_ui(null,12343,cast(current_timestamp as timestamp),25,2);
 SELECT * FROM racuni_ui(null,54321,cast(current_timestamp as timestamp),25,10);
-
 --update
 SELECT * FROM racuni_ui(1,54321,cast(current_timestamp as timestamp),23,2);

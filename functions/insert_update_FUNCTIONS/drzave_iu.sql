@@ -4,7 +4,6 @@ $$
     DECLARE
         kljuc integer;
 BEGIN
-
         -- INSERT FUNCTION
         IF(i_id_drzave IS NULL ) THEN
             BEGIN
@@ -33,9 +32,7 @@ BEGIN
             SET drzava = i_drzava,
                 oznaka_drzave = i_oznaka_drzave
             WHERE id_drzave = i_id_drzave;
-
             kljuc = i_id_drzave;
-
             --exceptions
             EXCEPTION
             WHEN integrity_constraint_violation THEN
@@ -52,13 +49,8 @@ BEGIN
                 RAISE EXCEPTION 'Napaka ...';
             END;
         END IF;
-
     RETURN kljuc;
-
 END;
 $$ LANGUAGE plpgsql;
-
-
 SELECT * FROM drzave_iu(null,'Madjarska','MDR');
-
 SELECT * FROM drzave_iu(11,'Madarska','MD');
