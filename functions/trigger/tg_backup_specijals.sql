@@ -1,3 +1,5 @@
+--TABELA
+
 CREATE TABLE backup_specijalov
 (
     id_specijala_backup serial not null constraint pk_backup_specijalov primary key,
@@ -7,6 +9,7 @@ CREATE TABLE backup_specijalov
 );
 
 
+--FUNCKIJA
 CREATE OR REPLACE FUNCTION tg_backup_specials ()
 RETURNS TRIGGER AS
 $$
@@ -28,10 +31,11 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-
+--TRIGGER
 CREATE TRIGGER tg_specijali
     AFTER INSERT OR UPDATE OR DELETE
     ON specijali FOR EACH ROW
     EXECUTE PROCEDURE tg_backup_specials();
 
+--KLIC
 SELECT FROM specijali_iu(null,'Kaligula',20,false,1,3,1,'20.02.200','kaligaugdfs',16);

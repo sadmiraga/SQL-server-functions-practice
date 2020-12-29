@@ -29,4 +29,4 @@ $$ LANGUAGE plpgsql;
 
 
 --klic funckije 
-SELECT * from zasluzki_po_specijalu();
+    SELECT * from zasluzki_po_specijalu();

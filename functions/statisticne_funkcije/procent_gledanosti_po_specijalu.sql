@@ -18,24 +18,17 @@ DECLARE
 BEGIN
     FOR speijali_table IN SELECT * FROM specijali
     LOOP
-
         --get number of views
         SELECT COUNT(*) INTO stevilo_ogledov
         FROM ogledi
         WHERE id_specijala = speijali_table.id_specijala;
-
         --get all minutes watched
         SELECT SUM(trajanje_ogleda) INTO stevilo_odgledanih_minut
         FROM ogledi
         WHERE id_specijala = speijali_table.id_specijala;
-
         t_row.ime_specijala = speijali_table.ime_specijala;
-
         procent_gledanosti = stevilo_odgledanih_minut / (stevilo_ogledov * speijali_table.trajanje_specijala) *100;
-
         t_row.procent_gledanosti =  procent_gledanosti;
-
-
         RETURN NEXT t_row;
     END LOOP;
 END;
